@@ -27,6 +27,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+/* Disable updates notification */
+add_filter( 'site_transient_update_plugins', function( $value ) {
+	unset( $value->response['elementor/elementor.php'] );
+	return $value;
+} );
+
 define( 'ELEMENTOR_VERSION', '3.0.5' );
 define( 'ELEMENTOR_PREVIOUS_STABLE_VERSION', '2.9.14' );
 
